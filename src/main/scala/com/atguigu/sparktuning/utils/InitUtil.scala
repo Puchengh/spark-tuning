@@ -15,15 +15,17 @@ object InitUtil {
     val sparkSession: SparkSession = initSparkSession(sparkConf)
 //    initHiveTable(sparkSession)
 //    initBucketTable(sparkSession)
-    saveData(sparkSession)
+//    saveData(sparkSession)
+    println(sparkSession)
   }
 
   def initSparkSession( sparkConf: SparkConf ): SparkSession = {
-    System.setProperty("HADOOP_USER_NAME", "atguigu")
-    val sparkSession = SparkSession.builder().config(sparkConf).enableHiveSupport().getOrCreate()
+    System.setProperty("HADOOP_USER_NAME", "puchen")
+//    val sparkSession = SparkSession.builder().config(sparkConf).enableHiveSupport().getOrCreate()
+    val sparkSession = SparkSession.builder().config(sparkConf).config("hive.metastore.uris","thrift://master:9083").enableHiveSupport().getOrCreate()
     val ssc = sparkSession.sparkContext
     // TODO 改成自己的地址
-    ssc.hadoopConfiguration.set("fs.defaultFS", "hdfs://hadoop1:8020")
+    ssc.hadoopConfiguration.set("fs.defaultFS", "hdfs://master:8020")
     sparkSession
   }
 

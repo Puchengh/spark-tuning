@@ -1,0 +1,11 @@
+/target/
+/out/
+/.idea/codeStyles/codeStyleConfig.xml
+/.idea/compiler.xml
+/.idea/jarRepositories.xml
+/.idea/misc.xml
+/.idea/modules.xml
+/.idea/codeStyles/Project.xml
+/.idea/scala_compiler.xml
+/.idea/spark-tuning.iml
+/.idea/vcs.xml

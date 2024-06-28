@@ -9,7 +9,7 @@ object ExplainDemo {
 
   def main( args: Array[String] ): Unit = {
     val sparkConf = new SparkConf().setAppName("ExplainDemo")
-//      .setMaster("local[*]") //TODO 要打包提交集群执行，注释掉
+      .setMaster("local[*]") //TODO 要打包提交集群执行，注释掉
     val sparkSession: SparkSession = InitUtil.initSparkSession(sparkConf)
 
 
