@@ -14,37 +14,37 @@ object PredicateTuning {
 
     sparkSession.sql("use sparktuning;")
 
-/*
-    println("=======================================Inner on 左表=======================================")
-    val innerStr1 =
-    """
-        |select
-        |  l.courseid,
-        |  l.coursename,
-        |  r.courseid,
-        |  r.coursename
-        |from sale_course l join course_shopping_cart r
-        |  on l.courseid=r.courseid and l.dt=r.dt and l.dn=r.dn
-        |  and l.courseid<2
-      """.stripMargin
-    sparkSession.sql(innerStr1).show()
-    sparkSession.sql(innerStr1).explain(mode = "extended")
 
-    println("=======================================Inner where 左表=======================================")
-    val innerStr2 =
-      """
-        |select
-        |  l.courseid,
-        |  l.coursename,
-        |  r.courseid,
-        |  r.coursename
-        |from sale_course l join course_shopping_cart r
-        |  on l.courseid=r.courseid and l.dt=r.dt and l.dn=r.dn
-        |where l.courseid<2
-      """.stripMargin
-    sparkSession.sql(innerStr2).show()
-    sparkSession.sql(innerStr2).explain(mode = "extended")
-*/
+//    println("=======================================Inner on 左表=======================================")
+//    val innerStr1 =
+//    """
+//        |select
+//        |  l.courseid,
+//        |  l.coursename,
+//        |  r.courseid,
+//        |  r.coursename
+//        |from sale_course l join course_shopping_cart r
+//        |  on l.courseid=r.courseid and l.dt=r.dt and l.dn=r.dn
+//        |  and l.courseid<2
+//      """.stripMargin
+//    sparkSession.sql(innerStr1).show()
+//    sparkSession.sql(innerStr1).explain(mode = "extended")
+//
+//    println("=======================================Inner where 左表=======================================")
+//    val innerStr2 =
+//      """
+//        |select
+//        |  l.courseid,
+//        |  l.coursename,
+//        |  r.courseid,
+//        |  r.coursename
+//        |from sale_course l join course_shopping_cart r
+//        |  on l.courseid=r.courseid and l.dt=r.dt and l.dn=r.dn
+//        |where l.courseid<2
+//      """.stripMargin
+//    sparkSession.sql(innerStr2).show()
+//    sparkSession.sql(innerStr2).explain(mode = "extended")
+
 
     println("=======================================left on 左表=======================================")
     val leftStr1 =
@@ -57,8 +57,9 @@ object PredicateTuning {
         |from sale_course l left join course_shopping_cart r
         |  on l.courseid=r.courseid and l.dt=r.dt and l.dn=r.dn
         |  and l.courseid<2
+        |  order by l.courseid desc
       """.stripMargin
-    sparkSession.sql(leftStr1).show()
+    sparkSession.sql(leftStr1).show(20)
     sparkSession.sql(leftStr1).explain(mode = "extended")
 
     println("=======================================left where 左表=======================================")
