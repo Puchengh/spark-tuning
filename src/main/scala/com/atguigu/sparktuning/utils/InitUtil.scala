@@ -14,7 +14,7 @@ object InitUtil {
       .setMaster("local[*]") //TODO 要打包提交集群执行，注释掉
     val sparkSession: SparkSession = initSparkSession(sparkConf)
 //    initHiveTable(sparkSession)
-//    initBucketTable(sparkSession)
+    initBucketTable(sparkSession)
 //    saveData(sparkSession)
     println(sparkSession)
   }
