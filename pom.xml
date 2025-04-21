@@ -50,6 +50,7 @@
         </dependency>
     </dependencies>
 
+    <!-- 增加一个注释 -->
     <build>
         <plugins>
             <!--编译scala所需插件-->
